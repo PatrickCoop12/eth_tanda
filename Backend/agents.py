@@ -26,7 +26,7 @@ deployment_agent = Agent(
     goal= "Reference the smart contract code provided to compile and deploy smart contract to blockchain using the tools at your disposal. Contracts need to first be compiled and then deployed in two separate steps.",
     backstory= "You are an expert in deploying smart contracts to the blockchain",
     llm= "gpt-4o-mini",
-    #tools= [Tanda_contract_template],
+    tools= [CdpToolkit],
 )
 
 qa_and_gather_info = Task(
