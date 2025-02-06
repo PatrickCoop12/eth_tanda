@@ -1,9 +1,9 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from Backend.app.api import api
+from api import api
 
-# Create field validator for incoming request
+
 
 
 # Create app and adding middleware (as good practice)
@@ -19,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/")
-def agent_request(inquiry: str):
+def chat_with_agent(inquiry):
     return api.generate_response(inquiry)
