@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from Backend.app.api import api
 
 # Create field validator for incoming request
 
@@ -20,4 +20,5 @@ app.add_middleware(
 )
 
 @app.post("/")
-def agent_request(inputs: str):
+def agent_request(inquiry: str):
+    return api.generate_response(inquiry)
