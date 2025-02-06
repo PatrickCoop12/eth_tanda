@@ -1,0 +1,196 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_associationMembers",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_numMembers",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_contributionFrequencyInWeeks",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_distributionIntervalInWeeks",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_contributionAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "contributionAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contributionFrequencyInWeeks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distributionIntervalInWeeks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get_compFreq",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get_contribution",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get_members",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get_payout",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numMembers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Index for picking the next unpaid member in the `members` array"
+				}
+			},
+			"stateVariables": {
+				"contributionAmount": {
+					"details": "How much each member must contribute at each interval, stored in wei.      However, you can specify this value in the constructor as decimal Ether       (e.g., 0.002 ether, 0.5 ether, 1 ether, etc.)."
+				},
+				"contributionFrequencyInWeeks": {
+					"details": "How often each member must contribute, in weeks"
+				},
+				"distributionIntervalInWeeks": {
+					"details": "Interval (in weeks) at which the pot is distributed"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contract_Templates/Calculator.sol": "Calculator"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contract_Templates/Calculator.sol": {
+			"keccak256": "0xa7490a20f989e4d5179c91d43ac070b516d9ce58add58ab9ebbc55b15c07e08c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://077fab0805ba098765fa41753977804501cf621db1bca5d8b911f9d9d6684111",
+				"dweb:/ipfs/Qma5k1W2mZ7GBpFEviWoaJdJCCsonPCkJiakV6pkr3buDq"
+			]
+		}
+	},
+	"version": 1
+}

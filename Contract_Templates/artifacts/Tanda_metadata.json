@@ -1,0 +1,374 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_numMembers",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_contributionFrequencyInWeeks",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_distributionIntervalInWeeks",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_contributionAmountInEther",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_members",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "allPaidOut",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contribute",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contributionAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contributionFrequencyInWeeks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contributionsThisCycle",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "cycleCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "cycleStartTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distributionIntervalInWeeks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "finalizeCycle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasContributedThisCycle",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasReceivedPayout",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "isMember",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "members",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nextDistributionTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nextPayoutIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numMembers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "triggerDistribution",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"_contributionAmountInEther": "Amount each member contributes per interval, in decimal Ether                                      (e.g., 0.002 ether, 0.5 ether, 1 ether).",
+						"_contributionFrequencyInWeeks": "How often they must contribute (in weeks)",
+						"_distributionIntervalInWeeks": "How often the pot should be distributed (in weeks)",
+						"_members": "Array of member addresses (must match _numMembers in length)",
+						"_numMembers": "Number of participants in the tanda"
+					}
+				},
+				"isMember(address)": {
+					"details": "Check if a given address is in the `members` array."
+				}
+			},
+			"stateVariables": {
+				"contributionAmount": {
+					"details": "How much each member must contribute at each interval, stored in wei.      However, you can specify this value in the constructor as decimal Ether       (e.g., 0.002 ether, 0.5 ether, 1 ether, etc.)."
+				},
+				"contributionFrequencyInWeeks": {
+					"details": "How often each member must contribute, in weeks"
+				},
+				"contributionsThisCycle": {
+					"details": "How many total contributions have been made this cycle"
+				},
+				"cycleCount": {
+					"details": "Count of completed contribution cycles"
+				},
+				"cycleStartTime": {
+					"details": "Timestamp for when the current contribution cycle started"
+				},
+				"distributionIntervalInWeeks": {
+					"details": "Interval (in weeks) at which the pot is distributed"
+				},
+				"hasContributedThisCycle": {
+					"details": "Tracks whether a member has contributed in the current cycle"
+				},
+				"hasReceivedPayout": {
+					"details": "Tracks whether a member has received their one-time payout"
+				},
+				"members": {
+					"details": "List of all members’ addresses"
+				},
+				"nextDistributionTime": {
+					"details": "Next timestamp at or after which a distribution can occur"
+				},
+				"nextPayoutIndex": {
+					"details": "Index for picking the next unpaid member in the `members` array"
+				},
+				"numMembers": {
+					"details": "Number of participants in the tanda"
+				}
+			},
+			"title": "Parameterized Tanda (Rotating Savings) Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"allPaidOut()": {
+					"notice": "Helper to check if everyone has received the pot already."
+				},
+				"contribute()": {
+					"notice": "Each member should call `contribute()` once per contribution cycle,         sending exactly `contributionAmount` wei (equivalent to the specified decimal Ether)."
+				},
+				"finalizeCycle()": {
+					"notice": "Finalizes the current contribution cycle if either:         1) The contribution window has passed, or         2) All members have contributed."
+				},
+				"triggerDistribution()": {
+					"notice": "Trigger the distribution of the entire contract balance to the next unpaid member         if the current time is past `nextDistributionTime`."
+				}
+			},
+			"notice": "Demonstrates a rotating savings contract with customizable parameters:         - Number of members         - Frequency of contributions (in weeks)         - Contribution amount (in Ether, supporting decimals)         - Distribution interval (in weeks)         - List of member addresses IMPORTANT: This is a simplified example and is NOT production-ready.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contract_Templates/Reference.sol": "Tanda"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contract_Templates/Reference.sol": {
+			"keccak256": "0x1c5ff19c30ac55b1c04e384e0a8c3b18cce37624780ca347b0fdd4eb3920fc95",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b588b082af5179982ce60f5543c2f5892f055fe5620390dd5c5b5a7fcc487e9e",
+				"dweb:/ipfs/QmQxJYySbej9K9JXfz2buMuFuaLkyWXZjSw4kXHhEt4BSF"
+			]
+		}
+	},
+	"version": 1
+}
