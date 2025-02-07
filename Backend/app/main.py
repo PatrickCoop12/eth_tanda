@@ -20,6 +20,10 @@ app.add_middleware(
 )
 
 
-@app.post("/")
+@app.post("/chat_response")
 def chat_with_agent(inquiry:str, chat_history:str):
     return api.generate_response(inquiry, chat_history)
+
+@app.get("/chat")
+def chat():
+    return "Hello World!"
