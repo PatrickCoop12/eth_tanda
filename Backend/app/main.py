@@ -1,9 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from api import api
 
 
+class Query(BaseModel):
+    inquiry: str
+    chat_history: str
 
 
 # Create app and adding middleware (as good practice)
@@ -21,8 +25,8 @@ app.add_middleware(
 
 
 @app.post("/chat_response")
-def chat_with_agent(inquiry:str, chat_history:str):
-    return api.generate_response(inquiry, chat_history)
+def chat_with_agent(query:Query):
+    return api.generate_response(query.inquiry, query.chat_history)
 
 @app.get("/chat")
 def chat():
