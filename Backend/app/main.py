@@ -21,5 +21,5 @@ app.add_middleware(
 
 
 @app.post("/")
-def chat_with_agent(inquiry):
-    return api.generate_response(inquiry)
+def chat_with_agent(inquiry:str, chat_history:str):
+    return api.generate_response(inquiry, chat_history)

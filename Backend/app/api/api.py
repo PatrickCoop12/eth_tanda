@@ -11,14 +11,14 @@ from dotenv import load_dotenv
 # Load the .env file
 load_dotenv()
 
+# Initializing CDP tools for agent use
 cdp= CdpAgentkitWrapper()
 toolkit = CdpToolkit.from_cdp_agentkit_wrapper(cdp)
 
-
+# Creating tool variable and binding with LLM to create agent
 tools = toolkit.get_tools()
 llm = ChatOpenAI(model='gpt-4o-mini')
 
-from langchain_core.prompts import ChatPromptTemplate
 prompt = ChatPromptTemplate.from_messages([
     ("system", "A tanda is a regional version of a rotating savings and credit association (ROSCA). "
                "It is a form of a short-term no-interest loan among a group of friends and family where they contribute "
@@ -39,14 +39,14 @@ prompt = ChatPromptTemplate.from_messages([
     ('user', "{input}"),
     ("placeholder", "{agent_scratchpad}")])
 
-agent = create_tool_calling_agent(llm, tools=tools, prompt=prompt2)
+agent = create_tool_calling_agent(llm, tools=tools, prompt=prompt)
 
 tanda_formation_agent = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
-
+# Create generate response function that will be called on API requests
 def generate_response(inquiry:str, chat_history:str):
-    response = tanda_formation_agent.invoke({"input":[HumanMessage(content=inquiry),
-                                             "chat_history": chat_history]})
+    response = tanda_formation_agent.invoke({"input":[HumanMessage(content=inquiry)],
+                                             "chat_history": chat_history})
 
-    return response
+    return response['output']
 
