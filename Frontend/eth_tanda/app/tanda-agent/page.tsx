@@ -25,7 +25,7 @@ export default function TandaAgent() {
       const response = await axios.post('http://127.0.0.1:8000/chat_response', {
 
               inquiry: `${input}`,
-              chat_history: `${messages}`,
+              chat_history: `${JSON.stringify(messages)}`,
 
           }, {
               headers: {
@@ -45,6 +45,8 @@ export default function TandaAgent() {
       //const dataString = response
       const assistantMessage: Message = { role: "assistant", content: data.output}
       console.log(JSON.stringify(data.output))
+      console.log(JSON.stringify(data))
+      console.log(JSON.stringify(messages))
       setMessages((prevMessages) => [...prevMessages, assistantMessage])
     } catch (error) {
       console.error("Error:", error)
