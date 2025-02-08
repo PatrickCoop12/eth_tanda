@@ -8,28 +8,8 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address[]",
-						"name": "_associationMembers",
-						"type": "address[]"
-					},
-					{
 						"internalType": "uint256",
-						"name": "_numMembers",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_contributionFrequencyInWeeks",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_distributionIntervalInWeeks",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_contributionAmount",
+						"name": "_result",
 						"type": "uint256"
 					}
 				],
@@ -37,8 +17,14 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
-				"name": "contributionAmount",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "num",
+						"type": "uint256"
+					}
+				],
+				"name": "add",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -46,90 +32,12 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "contributionFrequencyInWeeks",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "distributionIntervalInWeeks",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "get_compFreq",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "get_contribution",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "get_members",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "get_payout",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "numMembers",
+				"name": "get",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -143,22 +51,7 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {
-				"constructor": {
-					"details": "Index for picking the next unpaid member in the `members` array"
-				}
-			},
-			"stateVariables": {
-				"contributionAmount": {
-					"details": "How much each member must contribute at each interval, stored in wei.      However, you can specify this value in the constructor as decimal Ether       (e.g., 0.002 ether, 0.5 ether, 1 ether, etc.)."
-				},
-				"contributionFrequencyInWeeks": {
-					"details": "How often each member must contribute, in weeks"
-				},
-				"distributionIntervalInWeeks": {
-					"details": "Interval (in weeks) at which the pot is distributed"
-				}
-			},
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
@@ -184,11 +77,11 @@
 	},
 	"sources": {
 		"Contract_Templates/Calculator.sol": {
-			"keccak256": "0xa7490a20f989e4d5179c91d43ac070b516d9ce58add58ab9ebbc55b15c07e08c",
+			"keccak256": "0xcd919d172b9e31ea193f7d08039f3b69f189e2dd2078e6ba9cb40208ff510ef2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://077fab0805ba098765fa41753977804501cf621db1bca5d8b911f9d9d6684111",
-				"dweb:/ipfs/Qma5k1W2mZ7GBpFEviWoaJdJCCsonPCkJiakV6pkr3buDq"
+				"bzz-raw://d9004452dd0161e449876b2841655213c7a498f528e89b835d1f5bad6456bba9",
+				"dweb:/ipfs/QmZUwKXpa7tPW7T6AyZkZPxFW6uTPtJSsTbJ2pvTZdyQ1V"
 			]
 		}
 	},
