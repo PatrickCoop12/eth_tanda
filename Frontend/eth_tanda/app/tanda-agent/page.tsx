@@ -64,7 +64,7 @@ export default function TandaAgent() {
   return (
     <div className="max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-        Tanda AI Agent
+        ETH Tanda Agent
       </h1>
       <div className="bg-gray-800 rounded-lg shadow-lg p-4 mb-4 h-[60vh] overflow-y-auto">
         {messages.map((m, index) => (

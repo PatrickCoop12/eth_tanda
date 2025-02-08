@@ -21,14 +21,17 @@ export default function RootLayout({
               href="/"
               className="text-2xl font-bold block mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
             >
-              Tanda Agent
+              ETH Tanda
             </Link>
             <nav className="space-y-4">
               <Link href="/" className="block hover:bg-gray-700 p-2 rounded transition-colors duration-200">
                 Home
               </Link>
               <Link href="/tanda-agent" className="block hover:bg-gray-700 p-2 rounded transition-colors duration-200">
-                AI Chat
+                ETH Tanda Agent
+              </Link>
+              <Link href="/instructions" className="block hover:bg-gray-700 p-2 rounded transition-colors duration-200">
+                Instructions After Deployment
               </Link>
             </nav>
           </aside>
