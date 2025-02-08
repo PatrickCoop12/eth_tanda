@@ -1,0 +1,8 @@
+fastapi == 0.115.8
+langchain == 0.3.17
+langchain-openai == 0.2.14
+langchain-community == 0.3.16
+uvicorn == 0.34.0
+pydantic
+cdp-sdk
+cdp-langchain
