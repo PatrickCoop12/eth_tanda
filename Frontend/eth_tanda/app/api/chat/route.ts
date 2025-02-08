@@ -1,24 +1,15 @@
 import { NextResponse } from "next/server"
 const axios = require('axios').default
 export async function POST(req: Request) {
-  const message = req.headers.get("inquiry")
-  const chatHistory = JSON.parse(req.headers.get("chat_history") || "[]")
+    const body = await req.json()
+    const message = body.inquiry
+    const chatHistory =  body.chat_history
+    console.log(body.inquiry)
+    console.log(body.chat_history)
 
-/** jknjn */
-//  const respons = await fetch("http://127.0.0.1:8000/chat_response", {
-//    method: "POST",
-//    headers: {
-//      'Accept': 'application/json, text/plain, */*',
-//      "Content-Type": "application/json",
-//    },
-//    body: JSON.stringify({
-//      "inquiry": "vfvvd",
-//      "chat_history": " "}
-//      ),
-//  })
   const response = await axios.post("http://127.0.0.1:8000/chat_response", {
-            "inquiry": "what can you help with?",
-            "chat_history": " "
+            "inquiry": `${body.inquiry}`,
+            "chat_history": `${body.chat_history}`
     }, {
       headers: {
           'accept': 'application/json',
@@ -27,8 +18,8 @@ export async function POST(req: Request) {
   }
 )
 
-  const data = await response.data; console.log(response.data)
+  const data = await response
+  console.log(JSON.stringify(data.data.output))
 
-
-  return NextResponse.json(data)
+  return new NextResponse(data)
 }

@@ -48,5 +48,5 @@ def generate_response(inquiry:str, chat_history:str):
     response = tanda_formation_agent.invoke({"input":[HumanMessage(content=inquiry)],
                                              "chat_history": chat_history})
 
-    return response['output']
+    return response
 
