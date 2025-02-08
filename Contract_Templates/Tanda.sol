@@ -3,58 +3,58 @@ pragma solidity ^0.8.26;
 
 contract Tanda {
     /// @dev Number of participants in the tanda
-    uint256 public numMembers;
+    uint256 internal numMembers;
     
     /// @dev How often each member must contribute, in weeks
-    uint256 public contributionFrequencyInWeeks;
+    uint256 internal contributionFrequencyInWeeks;
     
     /**
      * @dev How much each member must contribute at each interval, stored in wei.
      *      However, you can specify this value in the constructor as decimal Ether 
      *      (e.g., 0.002 ether, 0.5 ether, 1 ether, etc.).
      */
-    uint256 public contributionAmount;
+    uint256 internal contributionAmount;
     
     /// @dev Interval (in weeks) at which the pot is distributed
-    uint256 public distributionIntervalInWeeks;
+    uint256 internal distributionIntervalInWeeks;
     
     /// @dev List of all members’ addresses
-    address[] public members;
+    address[] internal members;
     
     /// @dev Tracks whether a member has contributed in the current cycle
-    mapping(address => bool) public hasContributedThisCycle;
+    mapping(address => bool) internal hasContributedThisCycle;
     
     /// @dev How many total contributions have been made this cycle
-    uint256 public contributionsThisCycle;
+    uint256 internal contributionsThisCycle;
     
     /// @dev Timestamp for when the current contribution cycle started
-    uint256 public cycleStartTime;
+    uint256 internal cycleStartTime;
     
     /// @dev Count of completed contribution cycles
-    uint256 public cycleCount;
+    uint256 internal cycleCount;
     
     /// @dev Next timestamp at or after which a distribution can occur
-    uint256 public nextDistributionTime;
+    uint256 internal nextDistributionTime;
     
     /// @dev Tracks whether a member has received their one-time payout
-    mapping(address => bool) public hasReceivedPayout;
+    mapping(address => bool) internal hasReceivedPayout;
     
     /// @dev Index for picking the next unpaid member in the `members` array
-    uint256 public nextPayoutIndex;
+    uint256 internal nextPayoutIndex;
 
     /**
      * @param _numMembers                  Number of participants in the tanda
      * @param _contributionFrequencyInWeeks How often they must contribute (in weeks)
      * @param _distributionIntervalInWeeks  How often the pot should be distributed (in weeks)
-     * @param _contributionAmountInEther    Amount each member contributes per interval, in decimal Ether
-     *                                      (e.g., 0.002 ether, 0.5 ether, 1 ether).
+     * @param _contributionAmountInWei    Amount each member contributes per interval, in wei
+     *                                      (e.g., 0.05 ether = 50000000000000000 wei).
      * @param _members                     Array of member addresses (must match _numMembers in length)
      */
     constructor(
         uint256 _numMembers,
         uint256 _contributionFrequencyInWeeks,
         uint256 _distributionIntervalInWeeks,
-        uint256 _contributionAmountInEther, // Pass something like 0.002 ether or 0.5 ether
+        uint256 _contributionAmountInWei, // Pass something like 0.002 ether or 0.5 ether
         address[] memory _members
     ) {
         require(_members.length == _numMembers, "Members array size mismatch");
@@ -68,7 +68,7 @@ contract Tanda {
         
         // Store the contribution amount in wei. Solidity automatically converts,
         // so if the constructor argument is 0.002 ether, that becomes 2000000000000000 wei.
-        contributionAmount = _contributionAmountInEther;
+        contributionAmount = _contributionAmountInWei;
         
         members = _members;
         
@@ -87,7 +87,7 @@ contract Tanda {
      */
     function contribute() external payable {
         // Must be a valid member
-        require(allPaidOut() == false, "Everyone has been paid out once, effectively ending the Tanda. Thank you for participating! Restart a new agreement if you'd like to continue with this Tanda." );
+        require(allPaidOut() == false, "Everyone has been paid out once, effectively ending the Tanda. Thank you for participating! Restart a new agreement if you would like to continue with this Tanda." );
         
         require(isMember(msg.sender), "Not a registered member");
         // Must not have contributed already this cycle
@@ -95,7 +95,7 @@ contract Tanda {
         // Must send the exact required contribution
         require(msg.value == contributionAmount, "Incorrect contribution amount");
 
-        require(allPaidOut() == false, "Everyone has been paid out once. Thank you for participating! Restart a new agreement if you'd like to continue with this Tanda." );
+        require(allPaidOut() == false, "Everyone has been paid out once. Thank you for participating! Restart a new agreement if you would like to continue with this Tanda." );
         
         // Ensure the contribution is within the current cycle window
         uint256 cycleDuration = contributionFrequencyInWeeks * 1 weeks;
@@ -109,7 +109,7 @@ contract Tanda {
         contributionsThisCycle += 1;
 
         // If all members have contributed this cycle, finalize the cycle
-        if (contributionsThisCycle == numMembers) {
+        if (contributionsThisCycle == numMembers && block.timestamp >= (cycleStartTime + cycleDuration)) {
             finalizeCycle();
         }
     }
@@ -120,13 +120,15 @@ contract Tanda {
      *         2) All members have contributed.
      */
     function finalizeCycle() public {
+
+        require(isMember(msg.sender), "Not a registered member");
         uint256 cycleDuration = contributionFrequencyInWeeks * 1 weeks;
         
-        // Can only finalize if the window is past or everyone contributed
+        // Can only finalize if the window is past and everyone contributed
         require(
-            block.timestamp >= (cycleStartTime + cycleDuration) ||
+            block.timestamp >= (cycleStartTime + cycleDuration) &&
             contributionsThisCycle == numMembers,
-            "Cannot finalize cycle yet"
+            "Cannot finalize cycle until agreed distribution interval time has passed"
         );
 
         // Advance to the next cycle
@@ -152,7 +154,8 @@ contract Tanda {
         //    "It is not yet time for distribution"
         //);
 
-        // Find the next member who hasn't been paid
+        // Find the next member who has not been paid
+        require(isMember(msg.sender), "Not a registered member");
         address payable recipient;
         bool found = false;
 
@@ -184,7 +187,7 @@ contract Tanda {
     /**
      * @dev Check if a given address is in the `members` array.
      */
-    function isMember(address _addr) public view returns (bool) {
+    function isMember(address _addr) internal view returns (bool) {
         for (uint256 i = 0; i < numMembers; i++) {
             if (members[i] == _addr) {
                 return true;
@@ -197,12 +200,25 @@ contract Tanda {
      * @notice Helper to check if everyone has received the pot already.
      */
     function allPaidOut() public view returns (bool) {
+        require(isMember(msg.sender), "Not a registered member");
         for (uint256 i = 0; i < numMembers; i++) {
             if (!hasReceivedPayout[members[i]]) {
                 return false;
             }
         }
         return true;
+    }
+
+    function confirmContributionAmount() public view returns (uint256) {
+        require(isMember(msg.sender), "Not a registered member");
+
+        return contributionAmount;
+    }
+
+    function confirmWhoHasContributed(address member_address) public view returns (bool) {
+        require(isMember(msg.sender), "Not a registered member");
+
+        return hasContributedThisCycle[member_address];
     }
 
     /**

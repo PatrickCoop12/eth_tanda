@@ -24,7 +24,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_contributionAmountInEther",
+						"name": "_contributionAmountInWei",
 						"type": "uint256"
 					},
 					{
@@ -51,6 +51,38 @@
 			},
 			{
 				"inputs": [],
+				"name": "confirmContributionAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "member_address",
+						"type": "address"
+					}
+				],
+				"name": "confirmWhoHasContributed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "contribute",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -58,202 +90,9 @@
 			},
 			{
 				"inputs": [],
-				"name": "contributionAmount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "contributionFrequencyInWeeks",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "contributionsThisCycle",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "cycleCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "cycleStartTime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "distributionIntervalInWeeks",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "finalizeCycle",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "hasContributedThisCycle",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "hasReceivedPayout",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_addr",
-						"type": "address"
-					}
-				],
-				"name": "isMember",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "members",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "nextDistributionTime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "nextPayoutIndex",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "numMembers",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -273,15 +112,12 @@
 			"methods": {
 				"constructor": {
 					"params": {
-						"_contributionAmountInEther": "Amount each member contributes per interval, in decimal Ether                                      (e.g., 0.002 ether, 0.5 ether, 1 ether).",
+						"_contributionAmountInWei": "Amount each member contributes per interval, in wei                                      (e.g., 0.05 ether = 50000000000000000 wei).",
 						"_contributionFrequencyInWeeks": "How often they must contribute (in weeks)",
 						"_distributionIntervalInWeeks": "How often the pot should be distributed (in weeks)",
 						"_members": "Array of member addresses (must match _numMembers in length)",
 						"_numMembers": "Number of participants in the tanda"
 					}
-				},
-				"isMember(address)": {
-					"details": "Check if a given address is in the `members` array."
 				}
 			},
 			"stateVariables": {
@@ -322,7 +158,6 @@
 					"details": "Number of participants in the tanda"
 				}
 			},
-			"title": "Parameterized Tanda (Rotating Savings) Contract",
 			"version": 1
 		},
 		"userdoc": {
@@ -341,13 +176,12 @@
 					"notice": "Trigger the distribution of the entire contract balance to the next unpaid member         if the current time is past `nextDistributionTime`."
 				}
 			},
-			"notice": "Demonstrates a rotating savings contract with customizable parameters:         - Number of members         - Frequency of contributions (in weeks)         - Contribution amount (in Ether, supporting decimals)         - Distribution interval (in weeks)         - List of member addresses IMPORTANT: This is a simplified example and is NOT production-ready.",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"Contract_Templates/Reference.sol": "Tanda"
+			"Contract_Templates/Tanda.sol": "Tanda"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -361,12 +195,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Contract_Templates/Reference.sol": {
-			"keccak256": "0x1c5ff19c30ac55b1c04e384e0a8c3b18cce37624780ca347b0fdd4eb3920fc95",
+		"Contract_Templates/Tanda.sol": {
+			"keccak256": "0x0b12bd1d520a551301563c5de832923d03e7b184094c7c3a363d2b6ccef98dea",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b588b082af5179982ce60f5543c2f5892f055fe5620390dd5c5b5a7fcc487e9e",
-				"dweb:/ipfs/QmQxJYySbej9K9JXfz2buMuFuaLkyWXZjSw4kXHhEt4BSF"
+				"bzz-raw://f844d4a056df0277f0847dcf94f755b6cd39f73f4407d95c091de09cea418fc3",
+				"dweb:/ipfs/QmZvqk4JP7j5jiCs7PjS4zTEygoBGKrX3MBSH6LbPFYG8e"
 			]
 		}
 	},
