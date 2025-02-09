@@ -15,5 +15,5 @@ export async function POST(req: Request) {
 )
     const data = await response
 
-    return new NextResponse('Success', {status: 200})
+    return {return_code: new NextResponse('Success', {status: 200}), data: data}
 }
