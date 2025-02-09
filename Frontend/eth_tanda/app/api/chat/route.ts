@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     console.log(body.inquiry)
     console.log(body.chat_history)
 
-  const response = await axios.post("http://127.0.0.1:8000/chat_response", {
+  const response = await axios.post("http://54.209.78.170/chat_response", {
             "inquiry": `${body.inquiry}`,
             "chat_history": `${body.chat_history}`
     }, {

@@ -22,7 +22,7 @@ export default function TandaAgent() {
     setIsLoading(true)
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/chat_response', {
+      const response = await axios.post('http://54.209.78.170/chat_response', {
 
               inquiry: `${input}`,
               chat_history: `${JSON.stringify(messages)}`,
