@@ -27,7 +27,7 @@ export default function Instructions() {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold text-purple-400">2. Reference your Tanda on Etherscan</h2>
           <p className="text-gray-300">
-            Access your association's contract on the blockchain.
+            Access your association contract on the blockchain.
           </p>
           <div className="relative h-64 bg-gray-800 rounded-lg overflow-hidden">
             <Image
@@ -43,7 +43,7 @@ export default function Instructions() {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold text-green-400">3. Participate in Your Tanda Association</h2>
           <p className="text-gray-300">
-            Look under the 'contract' tab to access the contract's functionality and interact with your association.
+            Look under the contract tab to access the contract functionality and interact with your association.
           </p>
           <div className="relative h-64 bg-gray-800 rounded-lg overflow-hidden">
             <Image
