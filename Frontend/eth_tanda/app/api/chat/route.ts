@@ -14,6 +14,7 @@ export async function POST(req: Request) {
   }
 )
     const data = await response
+    console.log('Received data', data)
 
-    return {return_code: new NextResponse('Success', {status: 200}), data: data}
+    return NextResponse.json({ message: 'Success!' }, { status: 200 })
 }
