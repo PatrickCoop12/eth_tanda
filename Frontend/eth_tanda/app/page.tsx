@@ -9,7 +9,7 @@ export default function Home() {
           </h1>
           <p className="text-xl text-gray-300">
             Seamlessly form Tanda associations on the Blockchain. ETH
-            Tanda's Agent is designed to walk you through formation and deploy
+            Tanda&#39;s Agent is designed to walk you through formation and deploy
             a smart contract directly to the blockchain with just a conversation.
           </p>
           <Link
@@ -55,7 +55,7 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200">
-            <h2 className="text-2xl font-semibold mb-4 text-purple-400">What you'll need to get started</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-purple-400">What you&#39;ll need to get started</h2>
             <p className="text-lg mb-4">ETH Agent Will Ask For the Following:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>Number of members in your association</li>
