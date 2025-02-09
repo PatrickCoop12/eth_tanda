@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import axios from 'axios'
+import axios from 'axios';
 export async function POST(req: Request) {
     const body = await req.json()
 
@@ -15,5 +15,5 @@ export async function POST(req: Request) {
 )
     const data = await response
 
-    return new NextResponse(data)
+    return new NextResponse('Success', {status: 200})
 }
